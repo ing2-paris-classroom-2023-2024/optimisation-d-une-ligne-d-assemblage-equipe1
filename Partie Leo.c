@@ -22,3 +22,24 @@ int addOperation(struct Operation listeOp[100],int nmbOp, int n1, int n2) // ajo
 
         }
     }
+if(verif1 == 0)  // si elle n'est pas ajouté on la rajoute
+    {
+        listeOp[nmbOp] = newOperation(n1);
+        listeOp[nmbOp].contrainte[listeOp[nmbOp].nmbC] = n2;
+        listeOp[nmbOp].nmbC++;
+        nmbOp++;
+
+    }
+
+    if(verif2 == 0)
+    {
+        listeOp[nmbOp] = newOperation(n2);
+        listeOp[nmbOp].contrainte[listeOp[nmbOp].nmbC] = n1;
+        listeOp[nmbOp].nmbC++;
+        nmbOp++;
+    }
+
+
+    return nmbOp;
+
+}
