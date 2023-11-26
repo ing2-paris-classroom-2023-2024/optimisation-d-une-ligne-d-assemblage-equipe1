@@ -43,3 +43,13 @@ if(verif1 == 0)  // si elle n'est pas ajouté on la rajoute
     return nmbOp;
 
 }
+
+int readExclusion(struct Operation listeOp[100],int nmbOp)  // chargement du fichier exclusions.txt
+{
+    FILE* fichier = fopen("..\\exclusions.txt", "r");
+
+    if (!fichier)
+    {
+        fprintf(stderr, "Impossible d'ouvrir exclusions.txt\n");
+        exit(EXIT_FAILURE);
+    }
