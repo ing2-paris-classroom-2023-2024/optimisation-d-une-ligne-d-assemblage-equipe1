@@ -67,3 +67,28 @@ int DFS(struct Operation listeOp[100],int nmbOp,struct Operation depart, struct 
     return 0;
 }
 
+
+void readPrecedences(struct Operation listeOp[100],int nmbOp)  // lecture du fichier precedences.txt
+{
+    FILE* fichier = fopen("precedences.txt", "r");
+
+    if (!fichier)
+    {
+        fprintf(stderr, "Impossible d'ouvrir precedences.txt\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int nombre1;
+    int nombre2;
+
+    while (fscanf(fichier, "%d %d", &nombre1, &nombre2) != EOF)
+    {
+
+        addSuivant(nombre1,nombre2,listeOp,nmbOp);
+
+    }
+
+    fclose(fichier);
+
+}
+
