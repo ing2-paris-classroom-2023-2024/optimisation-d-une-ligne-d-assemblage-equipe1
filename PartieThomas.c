@@ -4,3 +4,13 @@ int comparerByClassement(const void *a, const void *b)   // fonction pour classe
 {
     return ((struct Operation *)b)->classement - ((struct Operation *)a)->classement;
 }
+
+
+int getOpById2(int id,struct Operation listeOp[100],int nmbOp)
+{
+    for(int i = 0 ; i< nmbOp ; i++)
+    {
+        if(listeOp[i].id == id)
+            return i;
+    }
+}
