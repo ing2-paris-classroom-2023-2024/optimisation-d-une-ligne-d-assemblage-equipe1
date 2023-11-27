@@ -68,6 +68,26 @@ int DFS(struct Operation listeOp[100],int nmbOp,struct Operation depart, struct 
 }
 
 
+void addSuivant(int id1, int id2,struct Operation listeOp[100],int nmbOp)
+{
+    for(int i = 0 ; i < nmbOp ; i++)
+    {
+        if(listeOp[i].id == id1)
+        {
+            for(int k = 0 ; k < nmbOp ; k++)
+            {
+                if(listeOp[k].id == id2)
+                {
+                    listeOp[i].suivant[listeOp[i].nmbS] = id2;
+                    listeOp[i].nmbS++;
+                }
+            }
+        }
+    }
+}
+
+
+
 void readPrecedences(struct Operation listeOp[100],int nmbOp)  // lecture du fichier precedences.txt
 {
     FILE* fichier = fopen("precedences.txt", "r");
