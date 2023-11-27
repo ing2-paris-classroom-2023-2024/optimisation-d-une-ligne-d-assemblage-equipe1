@@ -53,3 +53,15 @@ int readExclusion(struct Operation listeOp[100],int nmbOp)  // chargement du fic
         fprintf(stderr, "Impossible d'ouvrir exclusions.txt\n");
         exit(EXIT_FAILURE);
     }
+ int nombre1, nombre2;
+    while (fscanf(fichier, "%d %d", &nombre1, &nombre2) != EOF)
+    {
+
+        nmbOp = addOperation(listeOp,nmbOp,nombre1,nombre2);
+    }
+
+    fclose(fichier);
+
+    return nmbOp;
+
+}
