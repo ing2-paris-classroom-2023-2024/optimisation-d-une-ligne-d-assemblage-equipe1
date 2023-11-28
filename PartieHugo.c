@@ -42,7 +42,7 @@ int DFS(struct Operation listeOp[100],int nmbOp,struct Operation depart, struct 
         ///printf("\non analyse les suivant de %d , %d suivants\n",pile[act].id,pile[act].nmbS);
         ///system("pause");
 
-        for(int i = 0 ; i < pile[act].nmbS ; i++) // Parcourir les successeurs du nœud actuel
+        for(int i = 0 ; i < pile[act].nmbS ; i++) /// Parcourir les successeurs du nœud actuel
         {
             ///printf("\non ajoute %d\n",pile[act].suivant[i]);
             ///system("pause");
@@ -50,7 +50,7 @@ int DFS(struct Operation listeOp[100],int nmbOp,struct Operation depart, struct 
             {
                 return 1;
             }
-            struct Operation suivant = getOpById(pile[act].suivant[i],listeOp,nmbOp); // Récupération du nœud suivant à partir de son identifiant
+            struct Operation suivant = getOpById(pile[act].suivant[i],listeOp,nmbOp); /// Récupération du nœud suivant à partir de son identifiant
             
             if(suivant.placed == 1) ///nœud suivant n'a pas déjà été visité, l'ajouter à la pile
             {
@@ -88,7 +88,7 @@ void addSuivant(int id1, int id2,struct Operation listeOp[100],int nmbOp)
 
 
 
-void readPrecedences(struct Operation listeOp[100],int nmbOp)  // lecture du fichier precedences.txt
+void readPrecedences(struct Operation listeOp[100],int nmbOp)  /// lecture du fichier precedences.txt
 {
     FILE* fichier = fopen("precedences.txt", "r");
 
@@ -112,3 +112,19 @@ void readPrecedences(struct Operation listeOp[100],int nmbOp)  // lecture du fic
 
 }
 
+
+int comparerById(const void *a, const void *b) /// Fonction de comparaison pour trier en fonction de l'identifiant
+{ 
+    return ((struct Operation *)a)->id - ((struct Operation *)b)->id;
+}
+
+int verifAllColored2(struct Operation listeOp[100],int nmbOp)  /// verifier si tous les operations sont coloré
+{
+    int verif = 0;
+    for(int i  = 0 ; i< nmbOp ; i++)
+    {
+        if(listeOp[i].couleur2 == 0)
+            verif = 1;
+    }
+    return verif;
+}
