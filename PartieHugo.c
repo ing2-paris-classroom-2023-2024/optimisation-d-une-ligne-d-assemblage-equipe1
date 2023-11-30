@@ -128,3 +128,86 @@ int verifAllColored2(struct Operation listeOp[100],int nmbOp)  /// verifier si t
     }
     return verif;
 }
+
+
+
+void TriTopologique(struct Operation listeOp[100], int nmbOp)  /// Algorithme de tri topologique
+{
+    /// Initialisation des opérations
+    for(int i = 0; i < nmbOp; i++)
+    {
+        listeOp[i].couleur2 = 0;  /// Initialise la couleur à 0 (non traité)
+        listeOp[i].pred = -1;     /// Initialise le prédécesseur à -1 (pas de prédécesseur)
+    }
+
+    int classement = 0;  /// Initialise le classement à 0
+    while(verifAllColored2(listeOp, nmbOp) == 1)  /// Continue tant que toutes les opérations ne sont pas colorées
+    {
+        int jeton = rand() % nmbOp;  /// Choix aléatoire d'une opération comme point de départ
+        int depart = jeton;
+
+        /// Débogage : Affichage du point de départ
+        ///printf("\nOn part de %d\n", listeOp[depart].id);
+        ///system("pause");
+
+        int out = 0;
+        while(out == 0 && listeOp[jeton].couleur2 != 2)  /// Boucle tant que l'opération actuelle n'est pas terminée
+        {
+            listeOp[jeton].couleur2 = 1;  /// Marque l'opération comme en cours de traitement
+
+            int find = 0;
+            do
+            {
+                find = 0;
+
+                /// Parcours des successeurs de l'opération actuelle
+                for(int i = 0; i < listeOp[jeton].nmbS; i++)
+                {
+                    int suiv = getOpById2(listeOp[jeton].suivant[i], listeOp, nmbOp);
+
+                    /// Si le successeur n'est pas encore traité
+                    if(listeOp[suiv].couleur2 == 0)
+                    {
+                        listeOp[suiv].pred = listeOp[jeton].id;
+                        jeton = suiv;
+                        listeOp[jeton].couleur2 = 1;  /// Marque le successeur comme en cours de traitement
+                        find = 1;
+
+                        /// Débogage : Affichage de la découverte d'une nouvelle opération
+                        ///printf("\nOn découvre %d\n", listeOp[jeton].id);
+                        ///system("pause");
+
+                        break;
+                    }
+                }
+            }
+            while(find == 1);
+
+            /// Débogage : Affichage si l'opération n'a pas de sortie
+            ///printf("\n%d n'a pas de sortie\n", listeOp[jeton].id);
+            ///system("pause");
+
+            listeOp[jeton].couleur2 = 2;  /// Marque l'opération comme terminée
+            listeOp[jeton].classement = classement;  /// Affecte le classement à l'opération
+            classement++;
+
+            if(jeton == depart)
+            {
+                out = 1;
+
+                /// Débogage : Affichage si on est revenu au point de départ
+                ///printf("\nNous sommes revenus au point de départ\n", listeOp[jeton].id);
+                ///system("pause");
+            }
+            else
+            {
+                jeton = getOpById2(listeOp[jeton].pred, listeOp, nmbOp);
+                /*
+                /// Débogage : Affichage du retour à une opération précédente
+                printf("\nOn revient à %d\n", listeOp[jeton].id);
+                system("pause");
+                */
+            }
+        }
+    }
+}
