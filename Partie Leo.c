@@ -65,3 +65,8 @@ int readExclusion(struct Operation listeOp[100],int nmbOp)  // chargement du fic
     return nmbOp;
 
 }
+
+int comparerByColor(const void *a, const void *b)   // fonction pour classer la liste d'peration en fonction de la couleur pour welsh powell
+{
+    return ((struct Operation *)a)->couleur - ((struct Operation *)b)->couleur;
+}
