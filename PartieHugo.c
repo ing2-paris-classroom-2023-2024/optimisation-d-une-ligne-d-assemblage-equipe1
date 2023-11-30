@@ -9,6 +9,16 @@ struct Operation getOpById(int id,struct Operation listeOp[100],int nmbOp)  /// 
 }
 
 
+int getOpById2(int id,struct Operation listeOp[100],int nmbOp)
+{
+    for(int i = 0 ; i< nmbOp ; i++)
+    {
+        if(listeOp[i].id == id)
+            return i;
+    }
+}
+
+
 
 void trouverRacine(struct Operation listeOp[100],int nmbOp) /// permet de marquer les operations qui n'ont pas de arc entrant ( pas de precedents)
 {
