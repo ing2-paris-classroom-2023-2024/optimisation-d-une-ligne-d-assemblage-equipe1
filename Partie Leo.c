@@ -70,3 +70,13 @@ int comparerByColor(const void *a, const void *b)   // fonction pour classer la 
 {
     return ((struct Operation *)a)->couleur - ((struct Operation *)b)->couleur;
 }
+
+void welshPowell(struct Operation listeOp[100],int nmbOp)  // Algo de welsh powell (voir vidéo dans le word)
+{
+
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerById); /// TRIER LE TABLEAU EN ORDRE DECROISSANT EN FONCTION DE l'ID
+
+    for(int i = 0 ; i < nmbOp ; i++)
+    {
+        listeOp[i].couleur = -1;
+    }
