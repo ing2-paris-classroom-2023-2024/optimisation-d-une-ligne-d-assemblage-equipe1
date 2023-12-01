@@ -80,3 +80,26 @@ void welshPowell(struct Operation listeOp[100],int nmbOp)  // Algo de welsh powe
     {
         listeOp[i].couleur = -1;
     }
+ int C = 0;
+    while(verifAllColored(listeOp,nmbOp) == 1)
+    {
+        for(int i = 0 ; i< nmbOp ; i++)
+        {
+            if(listeOp[i].couleur == -1)
+            {
+                int verif = 0;
+                for(int k = 0 ; k < listeOp[i].nmbC ; k++)
+                {
+                    struct Operation adjacent = getOpById(listeOp[i].contrainte[k],listeOp,nmbOp);
+                    if(adjacent.couleur == C)
+                        verif = 1;
+                }
+                if(verif == 0)
+                    listeOp[i].couleur = C;
+
+            }
+        }
+        C++;
+    }
+}
+
