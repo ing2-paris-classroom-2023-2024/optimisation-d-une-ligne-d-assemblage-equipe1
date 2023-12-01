@@ -221,3 +221,21 @@ void TriTopologique(struct Operation listeOp[100], int nmbOp)  /// Algorithme de
         }
     }
 }
+
+
+void opti4(struct Operation listeOp[100], int nmbOp) { /// optimisation en fonction des exclusions et précédences
+    for (int i = 0; i < nmbOp; i++) {
+        listeOp[i].placed = 0;
+    }
+/// pré-traitement
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerById);
+    welshPowell(listeOp, nmbOp);
+    TriTopologique(listeOp, nmbOp);
+    trouverRacine(listeOp, nmbOp);
+
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerByClassement);
+
+/// Initialisation des stations
+    struct Station listeStation[15]; 
+    int nmbStation = 0; 
+    int cmpOp = 0;
