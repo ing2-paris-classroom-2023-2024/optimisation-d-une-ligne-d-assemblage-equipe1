@@ -126,4 +126,104 @@ void TriTopologique(struct Operation listeOp[100],int nmbOp)  /// algo tri topol
         }
     }
 
+
+    float readTempsCycle()  // lecture du fichier temps_cycle.txt
+{
+    FILE* fichier = fopen("..\\+temps_cycle.txt", "r");
+
+    if (!fichier)
+    {
+        fprintf(stderr, "Impossible d'ouvrir temps_cycle.txt\n");
+        exit(EXIT_FAILURE);
+    }
+
+    float nombre1;
+    while (fscanf(fichier, "%f", &nombre1) != EOF)
+    {
+
+
+    }
+
+    fclose(fichier);
+
+    return nombre1;
+}
+
+void AfficherTempsOp(struct Operation listeOp[100],int nmbOp)
+{
+    /// AFFICHAGE DE OPERATIONS ET DE LEUR TEMPS
+    printf("\n\nListe des opérations et de leur temps d'execution\n\n");
+    for(int i = 0 ; i < nmbOp ; i++)
+    {
+        printf("\n%d temps: %.2f",listeOp[i].id,listeOp[i].temps);
+    }
+
+}
+
+    void opti2(struct Operation listeOp[100],int nmbOp,float tempscycle) /// Optimiser en fonction du temps de cycle et des precedences
+{
+    TriTopologique(listeOp, nmbOp);
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerByClassement);
+
+    struct Station listeStation[15];
+
+    int nmbStation = 0;
+    int cmpOp = 0;
+
+
+    while(cmpOp != nmbOp)
+    {
+        listeStation[nmbStation] = newStation();
+
+        //printf("\nCréation station %d\n",nmbStation+1);
+        //system("pause");
+
+        for(int i = cmpOp ; i< nmbOp ; i++)
+        {
+
+            if(listeStation[nmbStation].tempsTotal + listeOp[i].temps < tempscycle)
+            {
+                listeStation[nmbStation].listeOp[listeStation[nmbStation].nmbOp] = listeOp[i];
+                listeStation[nmbStation].nmbOp++;
+                listeStation[nmbStation].tempsTotal = listeStation[nmbStation].tempsTotal + listeOp[i].temps;
+                cmpOp++;
+
+                //printf("\nAjout de l'operation %d\n",listeOp[i].id);
+                //printf("\nTemps total de la station: %.2f\n",listeStation[nmbStation].tempsTotal);
+                //system("pause");
+            }
+            else
+            {
+                //printf("\nStation pleine\n");
+                //system("pause");
+                nmbStation++;
+                break;
+            }
+        }
+    }
+
+    /// AFFICHAGE DES STATION
+
+    printf("\n\nNombre minimal de station : %d",nmbStation+1);
+
+    printf("\nComposition des stations");
+
+    for(int i = 0 ; i < (nmbStation+1) ; i++)
+    {
+        printf("\n\nStation %d : ",i+1);
+
+        for(int k = 0 ; k< listeStation[i].nmbOp ; k++)
+        {
+            printf("%d ",listeStation[i].listeOp[k].id);
+        }
+        printf("\ntemps total d'execution : %.2fs ",listeStation[i].tempsTotal);
+    }
+
+
+}
+
+
+
+    
+
 }
