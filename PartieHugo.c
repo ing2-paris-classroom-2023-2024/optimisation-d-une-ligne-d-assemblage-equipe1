@@ -239,3 +239,48 @@ void opti4(struct Operation listeOp[100], int nmbOp) { /// optimisation en fonct
     struct Station listeStation[15]; 
     int nmbStation = 0; 
     int cmpOp = 0;
+
+/// Placement des opérations dans les stations
+    while (cmpOp != nmbOp) {
+        
+    int couleur = -1;
+
+    /// Parcours de la liste des opérations
+    for (int i = 0; i < nmbOp; i++) {
+       
+        if (listeOp[i].placed == 0) /// Vérifie si l'opération n'a pas encore été placée 
+        {
+            
+            if (couleur == -1 || listeOp[i].couleur == couleur) /// Vérifie si la couleur n'a pas encore été attribuée ou si elle correspond à la couleur de l'opération en cours
+            {
+                
+                if (listeOp[i].racine == 0) /// Si l'opé est racine, elle est placée directement dans la station
+                {
+                    listeOp[i].placed = 1;
+                    listeStation[nmbStation].listeOp[listeStation[nmbStation].nmbOp] = listeOp[i];
+                    listeStation[nmbStation].nmbOp++;
+                    couleur = listeOp[i].couleur;
+                    cmpOp++;
+                } else {
+                    /// Si l'opé n'est racine, vérifie si elle peut être atteinte par une opération déjà placée
+                    int verif = 0;
+                    for (int k = 0; k < nmbOp; k++) {
+                        if (listeOp[k].placed == 1) {
+                            //. Utilise DFS pour vérifier l'accessibilité
+                            if (DFS(listeOp, nmbOp, listeOp[k], listeOp[i]) == 1) {
+                                listeOp[i].placed = 1;
+                                listeStation[nmbStation].listeOp[listeStation[nmbStation].nmbOp] = listeOp[i];
+                                listeStation[nmbStation].nmbOp++;
+                                couleur = listeOp[i].couleur;
+                                cmpOp++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // station suivante
+    nmbStation++;
+}
