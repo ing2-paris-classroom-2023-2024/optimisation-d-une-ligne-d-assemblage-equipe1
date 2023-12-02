@@ -103,3 +103,17 @@ void welshPowell(struct Operation listeOp[100],int nmbOp)  // Algo de welsh powe
     }
 }
 
+void opti1(struct Operation listeOp[100],int nmbOp)  /// Optimiser en fonction des exclusions
+{
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerById); /// TRIER LE TABLEAU EN ORDRE CROISSANT
+
+    welshPowell(listeOp,nmbOp);
+
+    int max = 0;
+
+    for(int i = 0 ; i< nmbOp ; i++)
+    {
+        if(listeOp[i].couleur > max)
+            max = listeOp[i].couleur;
+    }
+
