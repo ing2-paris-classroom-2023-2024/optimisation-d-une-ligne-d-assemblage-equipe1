@@ -279,4 +279,22 @@ void opti3(struct Operation listeOp[100],int nmbOp,float tempsCycle)  /// Optimi
     }
 
 
+
+    /// AFFICHAGE DES STATION
+
+    printf("\n\nNombre minimal de station : %d",nmbStation+1);
+
+    printf("\nComposition des stations");
+
+    for(int i = 0 ; i < (nmbStation+1) ; i++)
+    {
+        printf("\n\nStation %d : ",i+1);
+
+        for(int k = 0 ; k< listeStation[i].nmbOp ; k++)
+        {
+            printf("%d ",listeStation[i].listeOp[k].id);
+        }
+        printf("\ntemps total d'execution : %.2fs ",listeStation[i].tempsTotal);
+    }
+
 }
