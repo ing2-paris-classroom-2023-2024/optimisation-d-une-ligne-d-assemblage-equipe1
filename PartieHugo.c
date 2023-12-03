@@ -266,7 +266,7 @@ void opti4(struct Operation listeOp[100], int nmbOp) { /// optimisation en fonct
                     int verif = 0;
                     for (int k = 0; k < nmbOp; k++) {
                         if (listeOp[k].placed == 1) {
-                            //. Utilise DFS pour vérifier l'accessibilité
+                            /// Utilise DFS pour vérifier l'accessibilité
                             if (DFS(listeOp, nmbOp, listeOp[k], listeOp[i]) == 1) {
                                 listeOp[i].placed = 1;
                                 listeStation[nmbStation].listeOp[listeStation[nmbStation].nmbOp] = listeOp[i];
@@ -283,4 +283,17 @@ void opti4(struct Operation listeOp[100], int nmbOp) { /// optimisation en fonct
     }
     // station suivante
     nmbStation++;
+}
+ /// affichage des stations
+ printf("\n\nNombre minimal de station : %d", nmbStation);
+    printf("\nComposition des stations");
+
+    for (int i = 0; i < nmbStation; i++) {
+        printf("\n\nStation %d : ", i + 1);
+
+        for (int k = 0; k < listeStation[i].nmbOp; k++) {
+            printf("%d ", listeStation[i].listeOp[k].id);
+        }
+        printf("\n ");
+    }
 }
