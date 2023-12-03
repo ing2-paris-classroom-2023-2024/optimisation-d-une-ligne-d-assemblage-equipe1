@@ -152,3 +152,13 @@ struct Operation getOpById(int id,struct Operation listeOp[100],int nmbOp)  // p
             return listeOp[i];
     }
 }
+
+void afficherExclusions(struct Operation listeOp[100],int nmbOp)
+{
+
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerById); /// TRIER LE TABLEAU EN ORDRE CROISSANT
+    /// AFFICHAGE DE OPERATIONS ET DE LEURS CONTRAINTES
+
+    printf("\n\nListe des opérations et de leurs exclusions\n\n");
+    for(int i = 0 ; i < nmbOp ; i++)
+    {
