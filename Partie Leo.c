@@ -162,3 +162,12 @@ void afficherExclusions(struct Operation listeOp[100],int nmbOp)
     printf("\n\nListe des opérations et de leurs exclusions\n\n");
     for(int i = 0 ; i < nmbOp ; i++)
     {
+    printf("\n%d contraintes: ",listeOp[i].id);
+
+        for(int k = 0 ; k <listeOp[i].nmbC ; k++ )
+        {
+            printf("%d ",listeOp[i].contrainte[k]);
+        }
+    }
+
+}
