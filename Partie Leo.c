@@ -144,3 +144,11 @@ int verifAllColored(struct Operation listeOp[100],int nmbOp)  // fonction utilis
     return verif;
 }
 
+struct Operation getOpById(int id,struct Operation listeOp[100],int nmbOp)  // permet de récupérer une operation dans la liste des operation avec son id
+{
+    for(int i = 0 ; i< nmbOp ; i++)
+    {
+        if(listeOp[i].id == id)
+            return listeOp[i];
+    }
+}
