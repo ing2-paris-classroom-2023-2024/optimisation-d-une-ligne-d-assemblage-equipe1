@@ -133,3 +133,14 @@ void opti1(struct Operation listeOp[100],int nmbOp)  /// Optimiser en fonction d
     }
 }
 
+int verifAllColored(struct Operation listeOp[100],int nmbOp)  // fonction utilisé pour welsh powell pour verifier si toutes les operations sont colloré
+{
+    int verif = 0;
+    for(int i  = 0 ; i< nmbOp ; i++)
+    {
+        if(listeOp[i].couleur == -1)
+            verif = 1;
+    }
+    return verif;
+}
+
