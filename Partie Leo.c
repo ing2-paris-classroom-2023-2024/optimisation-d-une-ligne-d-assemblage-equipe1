@@ -188,3 +188,21 @@ void afficherData(struct Operation listeOp[100],int nmbOp)  /// Menu affiche dat
         scanf("%d",&choix);
 
         switch (choix)
+             {
+            case 1:
+                afficherExclusions(listeOp,nmbOp);
+                break;
+            case 2:
+                afficherPrecedences(listeOp,nmbOp);
+                break;
+            case 3:
+                AfficherTempsOp(listeOp,nmbOp);
+                break;
+            case 4:
+                break;
+            default:
+                printf("\nChoix non valide.\n");
+        }
+
+    }
+}
