@@ -316,3 +316,31 @@ void optimiserStation(struct Operation listeOp[100],int nmbOp,float tmpCycle) //
         printf("\n\nchoix: ");
 
         scanf("%d",&choix);
+
+
+        switch (choix)
+        {
+            case 1:
+                opti1(listeOp,nmbOp);
+                break;
+            case 2:
+                opti2(listeOp,nmbOp,tmpCycle);
+                break;
+            case 3:
+                opti3(listeOp,nmbOp,tmpCycle);
+                break;
+            case 4:
+                opti4(listeOp,nmbOp);
+                break;
+            case 5:
+                opti5(listeOp,nmbOp,tmpCycle);
+                break;
+            case 6:
+                break;
+            default:
+                printf("\nChoix non valide.\n");
+        }
+
+    }
+}
+
