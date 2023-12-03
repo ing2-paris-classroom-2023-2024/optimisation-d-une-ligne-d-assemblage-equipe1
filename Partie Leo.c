@@ -171,3 +171,20 @@ void afficherExclusions(struct Operation listeOp[100],int nmbOp)
     }
 
 }
+
+void afficherData(struct Operation listeOp[100],int nmbOp)  /// Menu affiche data
+{
+    int choix=0;
+
+    while(choix != 4)
+    {
+        printf("\n\n1-Afficher les exclusions");
+        printf("\n2-Afficher les precedence");
+        printf("\n3-Afficher les temps d'execution");
+        printf("\n4-Retour");
+
+        printf("\n\nchoix: ");
+
+        scanf("%d",&choix);
+
+        switch (choix)
