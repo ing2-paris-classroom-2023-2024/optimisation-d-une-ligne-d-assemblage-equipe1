@@ -52,3 +52,40 @@ struct Station newStation() // creation d'une station
 
 };
 
+
+
+struct Operation newOperation(int id);
+struct Station newStation();
+void addContrainte(struct Operation *op, int i);
+int addOperation(struct Operation listeOp[100], int nmbOp, int n1, int n2);
+int readExclusion(struct Operation listeOp[100], int nmbOp);
+int comparerById(const void *a, const void *b);
+int comparerByColor(const void *a, const void *b);
+int comparerByDegres(const void *a, const void *b);
+int comparerByClassement(const void *a, const void *b);
+int verifAllColored(struct Operation listeOp[100], int nmbOp);
+struct Operation getOpById(int id, struct Operation listeOp[100], int nmbOp);
+void trouverRacine(struct Operation listeOp[100], int nmbOp);
+int getOpById2(int id, struct Operation listeOp[100], int nmbOp);
+void welshPowell(struct Operation listeOp[100], int nmbOp);
+void addTemps(int id, struct Operation listeOp[100], int nmbOp, float tmp);
+void addSuivant(int id1, int id2, struct Operation listeOp[100], int nmbOp);
+void readTempsOperation(struct Operation listeOp[100], int nmbOp);
+void readPrecedences(struct Operation listeOp[100], int nmbOp);
+int verifAllColored2(struct Operation listeOp[100], int nmbOp);
+void TriTopologique(struct Operation listeOp[100], int nmbOp);
+float readTempsCycle();
+void afficherExclusions(struct Operation listeOp[100], int nmbOp);
+void afficherPrecedences(struct Operation listeOp[100], int nmbOp);
+void AfficherTempsOp(struct Operation listeOp[100], int nmbOp);
+void afficherData(struct Operation listeOp[100], int nmbOp);
+void opti1(struct Operation listeOp[100], int nmbOp);
+void opti2(struct Operation listeOp[100], int nmbOp, float tempscycle);
+void opti3(struct Operation listeOp[100], int nmbOp, float tempsCycle);
+int verifAllplaced(struct Operation listeOp[100], int nmbOp);
+int DFS(struct Operation listeOp[100], int nmbOp, struct Operation depart, struct Operation arrive);
+void opti4(struct Operation listeOp[100], int nmbOp);
+void opti5(struct Operation listeOp[100], int nmbOp, float tempsCycle);
+void optimiserStation(struct Operation listeOp[100], int nmbOp, float tmpCycle);
+
+
