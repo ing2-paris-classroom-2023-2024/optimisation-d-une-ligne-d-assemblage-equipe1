@@ -222,6 +222,18 @@ void AfficherTempsOp(struct Operation listeOp[100],int nmbOp)
 
 }
 
+void opti3(struct Operation listeOp[100],int nmbOp,float tempsCycle)  /// Optimiser en fonction des exclusion et du temps de cycle
+{
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerById); /// TRIER LE TABLEAU EN ORDRE CROISSANT
+    welshPowell(listeOp,nmbOp);
+
+    qsort(listeOp, nmbOp, sizeof(struct Operation), comparerByColor); /// TRIER LE TABLEAU EN ORDRE CROISSANT
+
+
+
+    struct Station listeStation[15];
+    int nmbStation = 0;
+    int cmpOp = 0;
 
 
     
