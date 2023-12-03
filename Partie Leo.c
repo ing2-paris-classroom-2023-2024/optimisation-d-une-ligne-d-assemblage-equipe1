@@ -120,5 +120,16 @@ void opti1(struct Operation listeOp[100],int nmbOp)  /// Optimiser en fonction d
 
     printf("\nComposition des stations");
 
-    for(int i = 0 ; i < (ma
+    for(int i = 0 ; i < (max+1) ; i++)
+    {
+        printf("\n\nStation %d : ",i+1);
+        for(int k = 0 ; k< nmbOp ; k++)
+        {
+            if(listeOp[k].couleur == i)
+            {
+                printf("%d ",listeOp[k].id);
+            }
+        }
+    }
+}
 
