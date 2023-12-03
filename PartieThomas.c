@@ -306,6 +306,7 @@ void optimiserStation(struct Operation listeOp[100],int nmbOp,float tmpCycle) //
 
     while(choix != 6)
     {
+       ///proposition des différentes opti à l'utilisateur
         printf("\n\n1-Optimiser en fonction des exclusions"); // opt1
         printf("\n2-Optimiser en fonction du temps de cycle et des precedences"); // opt2
         printf("\n3-Optimiser en fonction des exclusion et du temps de cycle"); // opt3
@@ -314,10 +315,10 @@ void optimiserStation(struct Operation listeOp[100],int nmbOp,float tmpCycle) //
         printf("\n6-Retour");
 
         printf("\n\nchoix: ");
-
+         ///récupération choix de l'utilisateur
         scanf("%d",&choix);
 
-
+            ///switch case d'exécution et affichage des ssprog 
         switch (choix)
         {
             case 1:
