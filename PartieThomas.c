@@ -298,3 +298,7 @@ void opti3(struct Operation listeOp[100],int nmbOp,float tempsCycle)  /// Optimi
     }
 
 }
+
+
+void optimiserStation(struct Operation listeOp[100],int nmbOp,float tmpCycle) /// MENU optimiser stations
+{}
