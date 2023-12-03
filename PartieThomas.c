@@ -302,3 +302,17 @@ void opti3(struct Operation listeOp[100],int nmbOp,float tempsCycle)  /// Optimi
 
 void optimiserStation(struct Operation listeOp[100],int nmbOp,float tmpCycle) /// MENU optimiser stations
 {
+    int choix=0;
+
+    while(choix != 6)
+    {
+        printf("\n\n1-Optimiser en fonction des exclusions"); // opt1
+        printf("\n2-Optimiser en fonction du temps de cycle et des precedences"); // opt2
+        printf("\n3-Optimiser en fonction des exclusion et du temps de cycle"); // opt3
+        printf("\n4-Optimiser en fonction des exclusion et des precedences");  //opt4
+        printf("\n5-Optimiser en fonction de tout les parametres"); // opt5
+        printf("\n6-Retour");
+
+        printf("\n\nchoix: ");
+
+        scanf("%d",&choix);
