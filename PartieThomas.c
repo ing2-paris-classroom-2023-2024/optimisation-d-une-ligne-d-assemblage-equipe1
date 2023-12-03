@@ -236,6 +236,47 @@ void opti3(struct Operation listeOp[100],int nmbOp,float tempsCycle)  /// Optimi
     int cmpOp = 0;
 
 
-    
+     while(cmpOp != nmbOp)
+    {
+        listeStation[nmbStation] = newStation();
+
+        //printf("\nCréation station %d\n",nmbStation+1);
+        //system("pause");
+
+        for(int i = cmpOp ; i< nmbOp ; i++)
+        {
+            int verif = 0;
+            if(listeOp[i].couleur > 0)
+            {
+                if(listeOp[i].couleur != listeOp[i-1].couleur && listeStation[nmbStation].nmbOp !=0)
+                {
+                    verif = 1;
+                    //printf("\nNouvelle couleur detecte");
+                    //system("pause");
+                }
+            }
+            if(listeStation[nmbStation].tempsTotal + listeOp[i].temps < tempsCycle && verif !=1)
+            {
+                listeStation[nmbStation].listeOp[listeStation[nmbStation].nmbOp] = listeOp[i];
+                listeStation[nmbStation].nmbOp++;
+                listeStation[nmbStation].tempsTotal = listeStation[nmbStation].tempsTotal + listeOp[i].temps;
+                cmpOp++;
+
+                //printf("\nAjout de l'operation %d\n",listeOp[i].id);
+                //printf("\nTemps total de la station: %.2f\n",listeStation[nmbStation].tempsTotal);
+                //system("pause");
+            }
+            else
+            {
+                //printf("\nCréation station d'une nouvelle sation\n");
+                //system("pause");
+                nmbStation++;
+                break;
+            }
+        }
+
+
+    }
+
 
 }
